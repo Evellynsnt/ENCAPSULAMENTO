@@ -5,7 +5,7 @@ public class ManipularCarro {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
     
-        ArrayList<ManipularCarro> list = new ArrayList<>();
+        ArrayList<ManipularCarro1> list = new ArrayList<>();
         
         int op =0;
         while (op !=4){
@@ -25,7 +25,7 @@ public class ManipularCarro {
                 String modelo = sc.next();
                 System.out.print("Digite o ano de fabricação: ");
                 String fabricação = sc.next();
-                list.add(new ManipularCarro(marca, modelo, fabricação));
+                list.add(new ManipularCarro1(marca, modelo, fabricação));
                     break;
                 case 2:
                  if(list.isEmpty()){
@@ -33,31 +33,37 @@ public class ManipularCarro {
                     System.out.println("Lista vazia");
                     break;
                 } else{
-                    for (Orientacao c:list){
-                        contador = 0; 
-                        System.out.println((contado+1)"Modelo: "+c.getModelo()+" Marca: "+c.getMarca()+
-                        " Ano de Fabricação: "+c.getaAno());
+                    int contador = 0; 
+                    for (ManipularCarro1 c:list){
+                        System.out.println((contador+1)+" - Modelo: "+c.getModelo()+" Marca: "+c.getMarca()+
+                        " Ano de Fabricação: "+c.getAno());
                         contador++;
                     }
                 }
                  break;
                 case 3:
                 if(list.isEmpty()){
+                   
                     System.out.println("Lista vazia");
                     break;
                 } else{
+                    int contador = 0; 
+                    for (ManipularCarro1 c:list){
+                        System.out.println((contador+1)+" - Modelo: "+c.getModelo()+" Marca: "+c.getMarca()+
+                        " Ano de Fabricação: "+c.getAno());
+                        contador++;
+                    }
+                }
+                 
                     System.out.println("Digite o índice a ser removido:");
                     int indice = sc.nextInt();
-
-                if(indice>=0 && indice<list.size()) {
-                    list.remove(indice);
-                    System.out.println("Contato removido com sucesso!");
-                }
-            }
+                    list.remove(indice-1);
+                    System.out.println("Item removido com sucesso!");
+                    break;
                 case 4: 
-                System.out.println("Finalizando o programa...");
+                    System.out.println("Finalizando o programa...");
+                    return;
                 default:
-
                     break;
             }
                      
@@ -65,3 +71,4 @@ public class ManipularCarro {
         sc.close();
     }
 }
+
